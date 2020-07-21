@@ -18,4 +18,4 @@ for i in range(points_to_predict):
       # push the frame up one to make it progress into the future
      curr_frame = curr_frame[1:]
      
- plt.plot(future)    
+plt.plot(future)    
