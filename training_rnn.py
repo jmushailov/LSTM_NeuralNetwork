@@ -2,11 +2,12 @@
 # ~~~~~~~~~~~~~~~~~~ TRAINING THE RNN
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
+EPOCHS = 100
 
 # 2 layers + 1 output layer, 100 nodes each, using stochastic gradient descent and mean squared error loss
 model = Sequential()
 
-# Add the first layer.... the input shape is (Sample, seq_len-1, 1)
+# Add the first layer.... the input shape is (Sample, seq_len-1, 1). Return_sequences so we can add a second layer
 model.add(LSTM(
         input_shape = (sequence_length-1, 1), return_sequences = True,
         units = 100))
@@ -24,7 +25,7 @@ model.add(Dense(
 model.compile(loss = 'mse', optimizer = 'adam')
 
 
-model.fit(X_train, y_train, epochs = 1, validation_split = 0.05)
+model.fit(X_train, y_train, epochs = EPOCHS, validation_split = 0.05)
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
