@@ -30,5 +30,15 @@ model.add(Dense(
 model.compile(loss = 'mse', optimizer = 'adam')
 
 
-model.fit(X_train, y_train, epochs = EPOCHS, validation_split = validation,
+history = model.fit(X_train, y_train, epochs = EPOCHS, validation_split = validation,
           callbacks = [rlrop])
+
+
+# Loss History
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
